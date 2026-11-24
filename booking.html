@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking — Rapih. Barbershop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Rapih<span>.</span></a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & Kapster</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="konfirmasi.html">Konfirmasi</a></li>
+        <li><a href="tentang.html">Tentang & Kontak</a></li>
+      </ul>
+      <div class="nav-aksi">
+        <button id="btnMode" title="Ganti mode terang/gelap"><span id="iconMode">🌙</span></button>
+        <a href="booking.html" class="btn btn-utama" style="padding:9px 18px;">Booking Sekarang</a>
+        <button id="btnHamburger" title="Menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Reservasi</span>
+        <h2>Booking Layanan</h2>
+        <p>Ikuti 3 langkahnya pelan-pelan aja. Slot yang ditandai coret artinya udah penuh.</p>
+      </div>
+
+      <!-- stepper langkah -->
+      <div class="stepper" id="stepper">
+        <div class="step aktif" data-step="1"><span class="no">1</span> Layanan</div>
+        <div class="step" data-step="2"><span class="no">2</span> Kapster & Jadwal</div>
+        <div class="step" data-step="3"><span class="no">3</span> Data Diri</div>
+      </div>
+
+      <div class="booking-grid">
+        <!-- kolom kiri: isi tiap step -->
+        <div class="panel">
+
+          <!-- STEP 1: pilih layanan -->
+          <div class="step-isi" id="step1">
+            <h3 style="margin-bottom:16px;">1. Mau layanan apa hari ini?</h3>
+            <div id="pilihLayanan" style="display:grid; gap:12px;"></div>
+          </div>
+
+          <!-- STEP 2: pilih kapster + tanggal + slot -->
+          <div class="step-isi" id="step2" style="display:none;">
+            <h3 style="margin-bottom:16px;">2. Pilih kapster</h3>
+            <div id="pilihStylist" style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:26px;"></div>
+
+            <h3 style="margin-bottom:8px;">3. Pilih tanggal & jam</h3>
+            <div class="form-group" style="max-width:280px;">
+              <label for="tglBooking">Tanggal kunjungan</label>
+              <input type="date" id="tglBooking">
+              <small id="infoHari" style="display:block; margin-top:6px;"></small>
+            </div>
+            <div id="slotWrap">
+              <p style="color:var(--abu); font-size:0.9rem;">Pilih tanggal dulu untuk melihat slot yang tersedia.</p>
+            </div>
+          </div>
+
+          <!-- STEP 3: data diri -->
+          <div class="step-isi" id="step3" style="display:none;">
+            <h3 style="margin-bottom:16px;">4. Data buat konfirmasi reservasi</h3>
+            <div class="form-2">
+              <div class="form-group">
+                <label for="nama">Nama lengkap *</label>
+                <input type="text" id="nama" placeholder="cth: Bima Saputra">
+                <div class="error-msg" id="errNama">Namanya diisi dulu ya (min. 3 huruf)</div>
+              </div>
+              <div class="form-group">
+                <label for="telp">No. WhatsApp *</label>
+                <input type="tel" id="telp" placeholder="cth: 0812xxxxxxxx">
+                <div class="error-msg" id="errTelp">Format nomor nggak valid (10-13 digit)</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="catatan">Catatan untuk kapster (opsional)</label>
+              <textarea id="catatan" rows="3" placeholder="cth: potong rapi pinggiran, atasnya tetep panjang"></textarea>
+            </div>
+            <div class="form-group">
+              <label style="display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:0.88rem; cursor:pointer;">
+                <input type="checkbox" id="setuju" style="width:auto; margin-top:4px;">
+                <span>Saya datang maksimal 10 menit setelah jadwal booking. Kalau telat lebih, slot bisa di-skip ke pelanggan berikutnya. *</span>
+              </label>
+              <div class="error-msg" id="errSetuju">Centang dulu pernyataannya ya</div>
+            </div>
+            <button class="btn btn-utama" id="btnSubmit" style="width:100%;">Kunci Jadwal & Dapatkan Kode →</button>
+          </div>
+
+          <!-- tombol navigasi step -->
+          <div style="display:flex; justify-content:space-between; margin-top:24px;">
+            <button class="btn btn-outline" id="btnPrev" disabled>← Kembali</button>
+            <button class="btn btn-utama" id="btnNext">Lanjut →</button>
+          </div>
+        </div>
+
+        <!-- kolom kanan: ringkasan pesanan (kayak cart) -->
+        <aside class="panel" id="ringkasanPanel">
+          <h3 style="margin-bottom:14px;">Ringkasan Pesanan</h3>
+          <div id="isiRingkasan">
+            <p style="color:var(--abu); font-size:0.9rem;">Belum ada pilihan. Mulai dari step 1 ya.</p>
+          </div>
+          <div class="ringkasan-item total" style="margin-top:10px;">
+            <span>Total estimasi</span>
+            <span class="nilai" id="totalHarga">Rp 0</span>
+          </div>
+          <p style="font-size:0.78rem; color:var(--abu); margin-top:14px;">
+            💡 Pembayaran dilakukan di tempat setelah layanan selesai.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">Rapih<span>.</span></a>
+          <p style="margin-top:10px;">Barbershop & salon yang percaya bahwa penampilan rapih itu bukan gaya-gayaan, tapi bentuk menghargai diri sendiri.</p>
+        </div>
+        <div>
+          <h4>Halaman</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan & Kapster</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul>
+            <li>Jl. Cihampelas No. 27, Bandung</li>
+            <li>WA: 0812-3456-7890</li>
+            <li>hello@rapih-barbershop.id</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Rapih. Barbershop · Kelompok 1 — Tugas Proyek Akhir Desain Web</div>
+    </div>
+  </footer>
+
+  <!-- modal sukses booking -->
+  <div class="modal-overlay" id="modalSukses">
+    <div class="modal-box">
+      <button class="modal-tutup" data-tutup="modalSukses">✕</button>
+      <div style="text-align:center;">
+        <div style="font-size:2.6rem;">🎉</div>
+        <h3 style="margin:10px 0 8px;">Jadwal Berhasil Dikunci!</h3>
+        <p style="color:var(--abu); font-size:0.92rem; margin-bottom:18px;">
+          Kode reservasi kamu sudah dibuat. Simpan baik-baik dan tunjukkan ke kasir waktu datang.
+        </p>
+        <a href="konfirmasi.html" class="btn btn-utama" style="width:100%;">Lihat Halaman Konfirmasi →</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

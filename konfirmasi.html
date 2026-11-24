@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Reservasi — Rapih. Barbershop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Rapih<span>.</span></a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & Kapster</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="konfirmasi.html">Konfirmasi</a></li>
+        <li><a href="tentang.html">Tentang & Kontak</a></li>
+      </ul>
+      <div class="nav-aksi">
+        <button id="btnMode" title="Ganti mode terang/gelap"><span id="iconMode">🌙</span></button>
+        <a href="booking.html" class="btn btn-utama" style="padding:9px 18px;">Booking Sekarang</a>
+        <button id="btnHamburger" title="Menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <section>
+    <div class="container konfirmasi-wrap">
+
+      <!-- kalau belum ada booking -->
+      <div id="kosong" style="display:none; text-align:center; padding:40px 0;">
+        <div style="font-size:3.4rem;">📭</div>
+        <h2 style="margin:14px 0 8px;">Belum ada reservasi</h2>
+        <p style="color:var(--abu); max-width:420px; margin:0 auto 24px;">
+          Halaman ini nge-simpan data booking kamu di browser (localStorage).
+          Selesaikan dulu satu booking di halaman Booking, terus datang ke sini lagi.
+        </p>
+        <a href="booking.html" class="btn btn-utama">Booking Sekarang →</a>
+      </div>
+
+      <!-- detail booking terakhir -->
+      <div id="isiKonfirmasi" style="display:none;">
+        <div class="kartu-konfirmasi">
+          <div class="konfirmasi-head">
+            <div class="ceklis">✓</div>
+            <h2 style="font-size:1.3rem;">Reservasi Terkonfirmasi</h2>
+            <p style="font-size:0.88rem; opacity:0.8; margin-top:6px;">Tunjukkan kode ini ke kasir saat datang</p>
+            <div class="kode-booking" id="kodeBooking" style="margin-top:12px;">RPH-0000</div>
+          </div>
+          <div class="detail-konfirmasi">
+            <div class="baris-detail"><span>Nama</span><span id="dNama"></span></div>
+            <div class="baris-detail"><span>No. WhatsApp</span><span id="dTelp"></span></div>
+            <div class="baris-detail"><span>Layanan</span><span id="dLayanan"></span></div>
+            <div class="baris-detail"><span>Kapster</span><span id="dStylist"></span></div>
+            <div class="baris-detail"><span>Jadwal</span><span id="dJadwal"></span></div>
+            <div class="baris-detail"><span>Durasi</span><span id="dDurasi"></span></div>
+            <div class="baris-detail" style="border-bottom:none;"><span>Estimasi biaya</span><span id="dHarga" style="color:var(--kuning-tua);"></span></div>
+            <div id="dCatatanWrap" style="display:none;" class="baris-detail"><span>Catatan</span><span id="dCatatan"></span></div>
+
+            <p style="font-size:0.8rem; color:var(--abu); margin-top:18px;">
+              📍 Jl. Cihampelas No. 27, Bandung — datang 5–10 menit sebelum jadwal biar slot-nya gak dilepas.
+              Reschedule/kabarin lewat WA 0812-3456-7890.
+            </p>
+
+            <div style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap;">
+              <button class="btn btn-outline" id="btnCetak" style="flex:1;">🖨 Cetak / Simpan PDF</button>
+              <button class="btn btn-outline" id="btnHapus" style="flex:1; border-color:#d9534f; color:#d9534f;">Batalkan Reservasi</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- riwayat booking sebelumnya -->
+        <h3 style="margin:36px 0 14px; font-size:1.05rem;">Riwayat reservasi di perangkat ini</h3>
+        <div id="riwayatList" style="display:grid; gap:12px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">Rapih<span>.</span></a>
+          <p style="margin-top:10px;">Barbershop & salon yang percaya bahwa penampilan rapih itu bukan gaya-gayaan, tapi bentuk menghargai diri sendiri.</p>
+        </div>
+        <div>
+          <h4>Halaman</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan & Kapster</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul>
+            <li>Jl. Cihampelas No. 27, Bandung</li>
+            <li>WA: 0812-3456-7890</li>
+            <li>hello@rapih-barbershop.id</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Rapih. Barbershop · Kelompok 1 — Tugas Proyek Akhir Desain Web</div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // halaman ini baca data dari localStorage, bukan dari server
+    const booking = JSON.parse(localStorage.getItem("rapihBookingTerakhir") || "null");
+    const kosong = document.getElementById("kosong");
+    const isi = document.getElementById("isiKonfirmasi");
+
+    if (!booking) {
+      kosong.style.display = "block";
+    } else {
+      isi.style.display = "block";
+
+      document.getElementById("kodeBooking").textContent = booking.kode;
+      document.getElementById("dNama").textContent = booking.nama;
+      document.getElementById("dTelp").textContent = booking.telp;
+      document.getElementById("dLayanan").textContent = booking.layanan;
+      document.getElementById("dStylist").textContent = booking.stylist;
+      document.getElementById("dDurasi").textContent = booking.durasi + " menit";
+      document.getElementById("dHarga").textContent = formatRupiah(booking.harga);
+
+      const d = new Date(booking.tanggal + "T00:00:00");
+      document.getElementById("dJadwal").textContent =
+        NAMA_HARI[d.getDay()] + ", " + d.getDate() + " " + NAMA_BULAN[d.getMonth()] + " " + d.getFullYear() + " · " + booking.jam + " WIB";
+
+      if (booking.catatan) {
+        document.getElementById("dCatatanWrap").style.display = "flex";
+        document.getElementById("dCatatan").textContent = booking.catatan;
+      }
+
+      // cetak = print dialog browser, bisa save as pdf juga dari situ
+      document.getElementById("btnCetak").addEventListener("click", function () {
+        window.print();
+      });
+
+      // batalin reservasi: hapus dari localStorage
+      document.getElementById("btnHapus").addEventListener("click", function () {
+        if (confirm("Yakin mau batalkan reservasi " + booking.kode + "?")) {
+          localStorage.removeItem("rapihBookingTerakhir");
+          const riwayat = JSON.parse(localStorage.getItem("rapihRiwayat") || "[]");
+          const sisa = riwayat.filter(function (r) { return r.kode !== booking.kode; });
+          localStorage.setItem("rapihRiwayat", JSON.stringify(sisa));
+          showToast("Reservasi dibatalkan.");
+          setTimeout(function () { location.reload(); }, 800);
+        }
+      });
+
+      // daftar riwayat
+      const riwayat = JSON.parse(localStorage.getItem("rapihRiwayat") || "[]");
+      const list = document.getElementById("riwayatList");
+      if (riwayat.length === 0) {
+        list.innerHTML = '<p style="color:var(--abu); font-size:0.9rem;">Belum ada riwayat.</p>';
+      } else {
+        // tampil dari yang paling baru
+        riwayat.slice().reverse().forEach(function (r) {
+          const dd = new Date(r.tanggal + "T00:00:00");
+          const kartu = document.createElement("div");
+          kartu.style.cssText = "background:var(--putih); border:1px solid var(--border); border-radius:12px; padding:14px 18px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:0.9rem;";
+          kartu.innerHTML =
+            "<div><strong>" + r.kode + "</strong> · " + r.layanan +
+            '<br><span style="color:var(--abu);">' + r.stylist + "</span></div>" +
+            '<div style="text-align:right;"><span style="color:var(--abu);">' +
+            NAMA_HARI[dd.getDay()] + ", " + dd.getDate() + " " + NAMA_BULAN[dd.getMonth()] + " · " + r.jam +
+            "</span><br><strong>" + formatRupiah(r.harga) + "</strong></div>";
+          list.appendChild(kartu);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
