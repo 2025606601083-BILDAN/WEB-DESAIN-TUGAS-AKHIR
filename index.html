@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapih. Barbershop — Booking Online</title>
+  <meta name="description" content="Rapih. Barbershop Bandung. Booking potong rambut, coloring, facial & hair spa langsung dari browser.">
+  <!-- font dari google biar tipografinya lebih enak diliat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== navbar ===== -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Rapih<span>.</span></a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & Kapster</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="konfirmasi.html">Konfirmasi</a></li>
+        <li><a href="tentang.html">Tentang & Kontak</a></li>
+      </ul>
+      <div class="nav-aksi">
+        <button id="btnMode" title="Ganti mode terang/gelap"><span id="iconMode">🌙</span></button>
+        <a href="booking.html" class="btn btn-utama" style="padding:9px 18px;">Booking Sekarang</a>
+        <button id="btnHamburger" title="Menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== hero ===== -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">✂️ Barbershop & Salon · Jl. Cihampelas No. 27, Bandung</span>
+        <h1>Tampil <em>Rapih</em>,<br>Nggak Perlu Ngantre.</h1>
+        <p>Pilih layanan, pilih kapster favorit, amankan slot jamnya. Reservasi di Rapih. cuma butuh kurang dari 2 menit — sisanya biar kami yang rapihin.</p>
+        <div class="hero-cta">
+          <a href="booking.html" class="btn btn-utama">Reservasi Sekarang →</a>
+          <a href="layanan.html" class="btn btn-outline">Lihat Layanan</a>
+        </div>
+        <p style="margin-top:20px; font-size:0.85rem;">
+          🕐 Buka Selasa–Minggu · 09.00–20.00 WIB (Senin libur)
+        </p>
+      </div>
+      <div class="hero-foto reveal">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Suasana Rapih Barbershop">
+        <div class="kartu-melayang">
+          <div>
+            <div class="angka">4.8/5</div>
+            <div style="font-size:0.78rem; color:var(--abu);">1.240+ ulasan pelanggan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== kenapa rapih ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="label">Kenapa Rapih.</span>
+        <h2>Booking di sini bedanya apa?</h2>
+        <p>Kami bukan cuma jualan potong rambut. Kami jual waktu yang nggak terbuang buat ngantre.</p>
+      </div>
+      <div class="grid-3">
+        <div class="kartu-fitur reveal">
+          <div class="ikon">🎫</div>
+          <h3>Slot pasti, tanpa yakin-yakin doang</h3>
+          <p>Setiap booking dapat kode reservasi. Datang 10 menit sebelum jadwal, langsung dilayani tanpa bertahan di kursi tunggu berjam-jam.</p>
+        </div>
+        <div class="kartu-fitur reveal">
+          <div class="ikon">👤</div>
+          <h3>Free pilih kapster</h3>
+          <p>Ada kapster yang cocok sama gaya rambutmu? Kunci jadwalnya langsung sama dia. Profil dan rating tiap kapster bisa dilihat dulu.</p>
+        </div>
+        <div class="kartu-fitur reveal">
+          <div class="ikon">💳</div>
+          <h3>Bayar di tempat, harga jelas</h3>
+          <p>Semua harga udah transparan di katalog. Nggak ada biaya kejutan pas mau bayar. Terima QRIS, transfer, dan tunai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== layanan populer (diambil dari data.js) ===== -->
+  <section style="background:var(--putih); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="label">Layanan Populer</span>
+        <h2>Palering banyak di-booking</h2>
+        <p>Data dari reservasi 3 bulan terakhir. Katalog lengkap ada di halaman layanan.</p>
+      </div>
+      <div class="grid-3" id="populerGrid"></div>
+      <div style="text-align:center; margin-top:36px;" class="reveal">
+        <a href="layanan.html" class="btn btn-outline">Lihat Semua Layanan →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== alur booking ===== -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="label">Cara Booking</span>
+        <h2>Tiga langkah, selesai</h2>
+      </div>
+      <div class="grid-3">
+        <div class="kartu-fitur reveal">
+          <div class="angka" style="font-family:var(--font-judul); font-size:2rem; font-weight:800; color:var(--kuning-tua);">01</div>
+          <h3>Pilih layanan & kapster</h3>
+          <p>Buka halaman Booking, pilih layanan dari daftar lalu tentukan kapster yang mau nangani kamu.</p>
+        </div>
+        <div class="kartu-fitur reveal">
+          <div class="angka" style="font-family:var(--font-judul); font-size:2rem; font-weight:800; color:var(--kuning-tua);">02</div>
+          <h3>Kunci slot jamnya</h3>
+          <p>Slot yang udah penuh otomatis ke-disable, jadi nggak mungkin dobel booking di jam yang sama.</p>
+        </div>
+        <div class="kartu-fitur reveal">
+          <div class="angka" style="font-family:var(--font-judul); font-size:2rem; font-weight:800; color:var(--kuning-tua);">03</div>
+          <h3>Isi data & konfirmasi</h3>
+          <p>Isi nama dan nomor WA, terus keluar kode reservasi. Datang tepat waktu, tunjukkan kodenya ke kasir.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:36px;" class="reveal">
+        <a href="booking.html" class="btn btn-utama">Mulai Booking →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== footer ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">Rapih<span>.</span></a>
+          <p style="margin-top:10px;">Barbershop & salon yang percaya bahwa penampilan rapih itu bukan gaya-gayaan, tapi bentuk menghargai diri sendiri.</p>
+        </div>
+        <div>
+          <h4>Halaman</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="layanan.html">Layanan & Kapster</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak</h4>
+          <ul>
+            <li>Jl. Cihampelas No. 27, Bandung</li>
+            <li>WA: 0812-3456-7890</li>
+            <li>hello@rapih-barbershop.id</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Rapih. Barbershop · Kelompok 6 — Tugas Proyek Akhir Desain Web</div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // isi 3 layanan terpopuler di beranda
+    // (id-nya dihardcode dulu, nanti kalau sempat dihitung dari data review)
+    const populerId = ["potong", "coloring", "shaving"];
+    const grid = document.getElementById("populerGrid");
+    populerId.forEach(function (id) {
+      const l = LAYANAN.find(function (x) { return x.id === id; });
+      if (!l) return;
+      grid.innerHTML +=
+        '<a href="booking.html?layanan=' + l.id + '" class="kartu-layanan reveal">' +
+          '<div class="foto"><img src="' + l.foto + '" alt="' + l.nama + '"><span class="harga">' + formatRupiah(l.harga) + '</span></div>' +
+          '<div class="isi-layanan">' +
+            '<h3>' + l.nama + '</h3>' +
+            '<p>' + l.deskripsi + '</p>' +
+            '<div class="meta-layanan"><span>⏱ ' + l.durasi + ' menit</span><span style="color:var(--kuning-tua); font-weight:600;">Booking →</span></div>' +
+          '</div>' +
+        '</a>';
+    });
+  </script>
+</body>
+</html>
