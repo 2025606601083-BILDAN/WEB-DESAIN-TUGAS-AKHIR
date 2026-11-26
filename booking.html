@@ -8,9 +8,117 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .promo-banner {
+      background: var(--krem);
+      border: 1.5px dashed var(--kuning);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .promo-badge {
+      background: var(--kuning);
+      color: var(--gelap);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+    }
+    .card-layanan-modern {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      background: var(--putih);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .card-layanan-modern:hover {
+      border-color: var(--kuning);
+      transform: translateY(-2px);
+    }
+    .card-layanan-modern.selected {
+      border-color: var(--kuning);
+      background: rgba(245, 185, 66, 0.08);
+    }
+    .badge-hemat {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--kuning-tua);
+      color: var(--putih);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+    .stylist-card-modern {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 18px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      background: var(--putih);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .stylist-card-modern:hover {
+      border-color: var(--kuning);
+      transform: translateY(-2px);
+    }
+    .stylist-card-modern.selected {
+      border-color: var(--kuning);
+      background: rgba(245, 185, 66, 0.08);
+    }
+    .slot-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .slot-btn {
+      padding: 10px 6px;
+      border: 1.5px solid var(--border);
+      background: var(--putih);
+      color: var(--gelap);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .slot-btn:hover:not(:disabled) {
+      border-color: var(--kuning);
+      color: var(--kuning-tua);
+    }
+    .slot-btn.dipilih {
+      background: var(--kuning);
+      color: var(--gelap);
+      border-color: var(--kuning);
+      font-weight: 700;
+    }
+    .slot-btn.penuh {
+      opacity: 0.4;
+      text-decoration: line-through;
+      cursor: not-allowed;
+      background: transparent;
+    }
+  </style>
 </head>
 <body>
-
   <nav class="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="logo">Rapih<span>.</span></a>
@@ -32,93 +140,106 @@
   <section>
     <div class="container">
       <div class="section-head">
-        <span class="label">Reservasi</span>
+        <span class="label">Reservasi Online</span>
         <h2>Booking Layanan</h2>
-        <p>Ikuti 3 langkahnya pelan-pelan aja. Slot yang ditandai coret artinya udah penuh.</p>
+        <p>Ikuti 3 langkah mudah di bawah. Slot yang tercoret artinya sudah penuh.</p>
       </div>
 
       <!-- stepper langkah -->
       <div class="stepper" id="stepper">
-        <div class="step aktif" data-step="1"><span class="no">1</span> Layanan</div>
-        <div class="step" data-step="2"><span class="no">2</span> Kapster & Jadwal</div>
-        <div class="step" data-step="3"><span class="no">3</span> Data Diri</div>
+        <div class="step aktif" data-step="1"><span class="no">1</span> Pilih Layanan</div>
+        <div class="step" data-step="2"><span class="no">2</span> Kapster & Jam</div>
+        <div class="step" data-step="3"><span class="no">3</span> Konfirmasi Data</div>
       </div>
 
       <div class="booking-grid">
         <!-- kolom kiri: isi tiap step -->
         <div class="panel">
 
-          <!-- STEP 1: pilih layanan -->
+          <!-- STEP 1: pilih layanan & paket promo -->
           <div class="step-isi" id="step1">
-            <h3 style="margin-bottom:16px;">1. Mau layanan apa hari ini?</h3>
-            <div id="pilihLayanan" style="display:grid; gap:12px;"></div>
+            <div class="promo-banner">
+              <div>
+                <span class="promo-badge">🔥 Rekomendasi Paket</span>
+                <h4 style="margin: 6px 0 2px; font-family: var(--font-judul);">Paket Komplit Styling & Perawatan</h4>
+                <p style="font-size:0.83rem; color:var(--abu); margin:0;">Pilih cepat layanan perawatan/styling favorit untuk langsung masuk ke ringkasan.</p>
+              </div>
+              <button type="button" class="btn btn-utama" id="btnPilihPromo" style="font-size:0.8rem; padding:8px 14px; white-space:nowrap;">Pilih Cepat</button>
+            </div>
+
+            <h3 style="margin-bottom:16px;">1. Pilih Layanan</h3>
+            <div id="pilihLayanan" style="display:grid; gap:14px;"></div>
           </div>
 
           <!-- STEP 2: pilih kapster + tanggal + slot -->
           <div class="step-isi" id="step2" style="display:none;">
-            <h3 style="margin-bottom:16px;">2. Pilih kapster</h3>
-            <div id="pilihStylist" style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:26px;"></div>
+            <h3 style="margin-bottom:16px;">2. Pilih Kapster Favoritmu</h3>
+            <div id="pilihStylist" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:14px; margin-bottom:28px;"></div>
 
-            <h3 style="margin-bottom:8px;">3. Pilih tanggal & jam</h3>
-            <div class="form-group" style="max-width:280px;">
-              <label for="tglBooking">Tanggal kunjungan</label>
+            <h3 style="margin-bottom:12px;">3. Tentukan Jadwal Kunjungan</h3>
+            <div class="form-group" style="max-width:300px;">
+              <label for="tglBooking">Tanggal Kunjungan</label>
               <input type="date" id="tglBooking">
-              <small id="infoHari" style="display:block; margin-top:6px;"></small>
+              <small id="infoHari" style="display:block; margin-top:6px; color:var(--abu); font-weight:500;"></small>
             </div>
-            <div id="slotWrap">
-              <p style="color:var(--abu); font-size:0.9rem;">Pilih tanggal dulu untuk melihat slot yang tersedia.</p>
+
+            <div id="slotWrap" style="margin-top:16px;">
+              <p style="color:var(--abu); font-size:0.9rem;">Pilih tanggal terlebih dahulu untuk melihat slot jam operasional.</p>
             </div>
           </div>
 
           <!-- STEP 3: data diri -->
           <div class="step-isi" id="step3" style="display:none;">
-            <h3 style="margin-bottom:16px;">4. Data buat konfirmasi reservasi</h3>
+            <h3 style="margin-bottom:16px;">4. Isikan Data Kontak Reservasi</h3>
             <div class="form-2">
               <div class="form-group">
-                <label for="nama">Nama lengkap *</label>
+                <label for="nama">Nama Lengkap *</label>
                 <input type="text" id="nama" placeholder="cth: Bima Saputra">
-                <div class="error-msg" id="errNama">Namanya diisi dulu ya (min. 3 huruf)</div>
+                <div class="error-msg" id="errNama">Nama wajib diisi (minimal 3 karakter)</div>
               </div>
               <div class="form-group">
-                <label for="telp">No. WhatsApp *</label>
-                <input type="tel" id="telp" placeholder="cth: 0812xxxxxxxx">
-                <div class="error-msg" id="errTelp">Format nomor nggak valid (10-13 digit)</div>
+                <label for="telp">Nomor WhatsApp *</label>
+                <input type="tel" id="telp" placeholder="cth: 081234567890">
+                <div class="error-msg" id="errTelp">Format nomor WhatsApp tidak valid (10-13 digit)</div>
               </div>
             </div>
             <div class="form-group">
-              <label for="catatan">Catatan untuk kapster (opsional)</label>
-              <textarea id="catatan" rows="3" placeholder="cth: potong rapi pinggiran, atasnya tetep panjang"></textarea>
+              <label for="catatan">Catatan / Permintaan Khusus (Opsional)</label>
+              <textarea id="catatan" rows="3" placeholder="cth: Minta gaya potongan rapi pinggiran, atasnya tetap panjang"></textarea>
             </div>
             <div class="form-group">
               <label style="display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:0.88rem; cursor:pointer;">
                 <input type="checkbox" id="setuju" style="width:auto; margin-top:4px;">
-                <span>Saya datang maksimal 10 menit setelah jadwal booking. Kalau telat lebih, slot bisa di-skip ke pelanggan berikutnya. *</span>
+                <span>Saya bersedia hadir maksimal 10 menit setelah jadwal booking. Apabila terlambat melebihi batas, slot bisa dialihkan ke pelanggan berikutnya. *</span>
               </label>
-              <div class="error-msg" id="errSetuju">Centang dulu pernyataannya ya</div>
+              <div class="error-msg" id="errSetuju">Mohon centang persetujuan kedatangan terlebih dahulu</div>
             </div>
-            <button class="btn btn-utama" id="btnSubmit" style="width:100%;">Kunci Jadwal & Dapatkan Kode →</button>
+            <button type="button" class="btn btn-utama" id="btnSubmit" style="width:100%; padding:14px; font-size:1rem;">Kunci Jadwal & Buat Kode Reservasi →</button>
           </div>
 
           <!-- tombol navigasi step -->
-          <div style="display:flex; justify-content:space-between; margin-top:24px;">
-            <button class="btn btn-outline" id="btnPrev" disabled>← Kembali</button>
-            <button class="btn btn-utama" id="btnNext">Lanjut →</button>
+          <div style="display:flex; justify-content:space-between; margin-top:28px; padding-top:18px; border-top:1.5px solid var(--border);">
+            <button type="button" class="btn btn-outline" id="btnPrev" disabled>← Kembali</button>
+            <button type="button" class="btn btn-utama" id="btnNext">Lanjut Ke Kapster & Jadwal →</button>
           </div>
         </div>
 
-        <!-- kolom kanan: ringkasan pesanan (kayak cart) -->
-        <aside class="panel" id="ringkasanPanel">
-          <h3 style="margin-bottom:14px;">Ringkasan Pesanan</h3>
+        <!-- kolom kanan: ringkasan pesanan -->
+        <aside class="panel" id="ringkasanPanel" style="position:sticky; top:90px; height:max-content;">
+          <h3 style="margin-bottom:16px; border-bottom:1.5px solid var(--border); padding-bottom:10px;">Ringkasan Pesanan</h3>
           <div id="isiRingkasan">
-            <p style="color:var(--abu); font-size:0.9rem;">Belum ada pilihan. Mulai dari step 1 ya.</p>
+            <p style="color:var(--abu); font-size:0.9rem;">Belum ada layanan terpilih. Silakan tentukan pilihan di Step 1.</p>
           </div>
-          <div class="ringkasan-item total" style="margin-top:10px;">
-            <span>Total estimasi</span>
-            <span class="nilai" id="totalHarga">Rp 0</span>
+
+          <div class="ringkasan-item total" style="margin-top:16px; padding-top:14px; border-top:1.5px dashed var(--border);">
+            <span>Total Estimasi</span>
+            <span class="nilai" id="totalHarga" style="color:var(--kuning-tua); font-size:1.25rem;">Rp 0</span>
           </div>
-          <p style="font-size:0.78rem; color:var(--abu); margin-top:14px;">
-            💡 Pembayaran dilakukan di tempat setelah layanan selesai.
-          </p>
+
+          <div style="background:var(--krem); padding:12px; border-radius:10px; margin-top:16px; font-size:0.78rem; color:var(--abu); display:flex; gap:8px; align-items:center;">
+            <span>💡</span>
+            <span>Pembayaran dilakukan di tempat setelah layanan selesai.</span>
+          </div>
         </aside>
       </div>
     </div>
@@ -156,14 +277,14 @@
   <!-- modal sukses booking -->
   <div class="modal-overlay" id="modalSukses">
     <div class="modal-box">
-      <button class="modal-tutup" data-tutup="modalSukses">✕</button>
+      <button type="button" class="modal-tutup" data-tutup="modalSukses">✕</button>
       <div style="text-align:center;">
-        <div style="font-size:2.6rem;">🎉</div>
-        <h3 style="margin:10px 0 8px;">Jadwal Berhasil Dikunci!</h3>
-        <p style="color:var(--abu); font-size:0.92rem; margin-bottom:18px;">
+        <div style="font-size:2.8rem;">🎉</div>
+        <h3 style="margin:10px 0 8px; font-family:var(--font-judul);">Jadwal Berhasil Dikunci!</h3>
+        <p style="color:var(--abu); font-size:0.92rem; margin-bottom:20px;">
           Kode reservasi kamu sudah dibuat. Simpan baik-baik dan tunjukkan ke kasir waktu datang.
         </p>
-        <a href="konfirmasi.html" class="btn btn-utama" style="width:100%;">Lihat Halaman Konfirmasi →</a>
+        <a href="konfirmasi.html" class="btn btn-utama" style="width:100%; text-align:center; display:block;">Lihat Halaman Konfirmasi →</a>
       </div>
     </div>
   </div>
